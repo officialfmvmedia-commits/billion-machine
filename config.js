@@ -5,7 +5,7 @@
 export const CONFIG = {
   NAME: 'Billion Machine',
   TICKER: 'BILLION',
-  CA: '8meyGYBfo79x6MyANkWGiinhbqhDLQ3KC4Fyooc6pump',            // token mint address. '' → "AWAITING CA", market cap shows $0 · PRE-LAUNCH
+  CA: '',            // token mint address. '' → "AWAITING CA", market cap shows $0 · PRE-LAUNCH
   BUY_URL: '',       // e.g. 'https://pump.fun/coin/<CA>'. '' → derived from CA if set
   X_URL: 'https://x.com/billionmachinex',         // e.g. 'https://x.com/billionmachine'
   TREASURY: '7LpS1zDBGyU8QW7g25mK75iK7NeomCnZDhbdYshyu9Aw', // treasury wallet (PUBLIC address only)

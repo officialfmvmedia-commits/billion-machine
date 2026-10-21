@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Billion Machine — One dose. One billion.</title>
+<meta name="description" content="A public machine with one instruction: reach $1,000,000,000. Every creator fee feeds the treasury. A published algorithm reads the chart, picks one action, and posts the receipt. Nobody presses the button.">
+<meta name="theme-color" content="#e4e6e6">
+<meta property="og:title" content="Billion Machine — One dose. One billion.">
+<meta property="og:description" content="A public machine with one instruction: reach $1,000,000,000.">
+<meta property="og:image" content="https://billionmachine.fun/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jetbrains-mono-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="modulepreload" href="vendor/three.module.js">
+<link rel="stylesheet" href="styles.css">
+<script type="importmap">{ "imports": { "three": "./vendor/three.module.js" } }</script>
+</head>
+<body class="is-loading">
+
+<div id="loader" aria-hidden="true">
+  <div class="ld-card"><div class="ld-bubble"><div class="ld-pill"></div></div></div>
+  <div class="ld-meta mono"><span>PREPARING DOSE</span><span id="ld-pct">0%</span></div>
+  <div class="ld-bar"><i id="ld-fill"></i></div>
+</div>
+
+<canvas id="gl" aria-hidden="true"></canvas>
+<div id="callouts" aria-hidden="true"></div>
+
+<header class="nav">
+  <a class="brand" href="#top" aria-label="Billion Machine home">
+    <span class="brand-mark"><i></i></span>
+    <span class="brand-word">BILLION&nbsp;MACHINE</span>
+  </a>
+  <nav class="nav-links">
+    <a href="#modes">Mechanism</a>
+    <a href="#floors">Floors</a>
+    <a href="#receipts">Receipts</a>
+    <a href="#facts">Facts</a>
+  </nav>
+  <div class="nav-right">
+    <button class="ca-chip mono" data-ca-chip type="button"><span class="dot"></span><span data-ca-text>AWAITING CA</span></button>
+    <a class="pill-btn" data-buy href="#" aria-disabled="true">Take the machine</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ───────── 1–3: SEALED → TEAR → BREAKOUT → EXPAND ───────── -->
+  <section id="seq" class="seq" aria-label="Introduction">
+    <div class="seq-sticky">
+      <div class="cap cap-hero" data-cap="0,0.12">
+        <p class="eyebrow mono"><span class="rx">Rx</span> ONLY · 1 MACHINE PER PACK</p>
+        <h1>One dose.<br>One billion.</h1>
+      </div>
+      <div class="cap cap-hero-sub" data-cap="0,0.12">
+        <p>A public machine with one instruction: <strong>reach $1,000,000,000.</strong> Fed by creator fees. Run by published rules. Nobody presses the button.</p>
+        <div class="scroll-cue mono"><span class="cue-line"><i></i></span>SCROLL TO OPEN</div>
+      </div>
+
+      <div class="cap cap-side cap-tear" data-cap="0.16,0.38">
+        <p class="eyebrow mono">STEP 01 · BREAK THE SEAL</p>
+        <h2>Every fee<br>feeds it.</h2>
+        <p>Creator fees flow into one public treasury. That treasury is the machine's only fuel.</p>
+      </div>
+
+      <div class="cap cap-side cap-right cap-break" data-cap="0.40,0.60">
+        <p class="eyebrow mono">STEP 02 · RELEASE</p>
+        <h2>Nobody presses<br>the button.</h2>
+        <p>No dev wallet. No vibes. No "trust me." A fixed algorithm decides — every cycle — and shows its work.</p>
+      </div>
+
+      <div class="cap cap-lift" data-cap="0.58,0.76">
+        <p class="eyebrow mono">ONE INSTRUCTION</p>
+        <h2>$0 → $1,000,000,000.</h2>
+      </div>
+
+      <div class="cap cap-exp" data-cap="0.80,1.01">
+        <p class="eyebrow mono">STEP 03 · INSPECT</p>
+        <h2>Built for one number.</h2>
+      </div>
+
+      <div class="micro micro-l mono">
+        <span>LOT 1B-000001</span><span>EXP: NEVER</span>
+      </div>
+      <div class="micro micro-r mono">
+        <span>DOSAGE: 1 MACHINE</span><span>SIDE EFFECTS: A BILLION</span>
+      </div>
+
+      <ol class="rail mono" aria-hidden="true">
+        <li data-rail="0">SEALED</li>
+        <li data-rail="1">TEAR</li>
+        <li data-rail="2">BREAKOUT</li>
+        <li data-rail="3">EXPAND</li>
+        <li class="rail-bar"><i></i></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ───────── 4: THE MECHANISM ───────── -->
+  <section id="modes" class="modes" aria-label="How the machine works">
+    <article class="mode" data-mode="cycle">
+      <div class="mode-card">
+        <p class="eyebrow mono">THE CYCLE · EVERY <span data-cycle-min>60</span> MIN</p>
+        <h2 class="mode-title">Read.<br>Decide.<br>Receipt.</h2>
+        <p class="mode-lede">Every cycle the machine wakes up, reads the chart, picks <strong>exactly one</strong> action, and posts a public receipt of what it saw and why.</p>
+        <ol class="cycle-steps mono">
+          <li><b>01</b> Fees land in the treasury</li>
+          <li><b>02</b> Machine reads 4 inputs</li>
+          <li><b>03</b> Rules select 1 of 5 modes</li>
+          <li><b>04</b> Action executes on-chain</li>
+          <li><b>05</b> Receipt is published</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="mode" data-mode="read">
+      <div class="mode-card">
+        <p class="eyebrow mono">INPUTS · WHAT IT SEES</p>
+        <h2 class="mode-title">Four readings.<br>Zero feelings.</h2>
+        <dl class="inputs">
+          <div><dt class="mono">PRICE / MA</dt><dd>Price against its own moving average.</dd></div>
+          <div><dt class="mono">DRAWDOWN</dt><dd>Distance below the last high.</dd></div>
+          <div><dt class="mono">VOLUME</dt><dd>Trading volume against its baseline.</dd></div>
+          <div><dt class="mono">FLOOR</dt><dd>Current floor on the climb to $1B.</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="mode" data-mode="charge">
+      <div class="mode-card">
+        <p class="eyebrow mono"><span class="mode-idx">MODE 01 / 05</span></p>
+        <h2 class="mode-title"><span class="mode-name">CHARGE</span></h2>
+        <p class="mode-lede">Chart calm or climbing? The machine does nothing loud. It stacks SOL. A full treasury is ammunition.</p>
+        <dl class="spec mono">
+          <div><dt>TRIGGER</dt><dd>Price ≥ moving average, no dip</dd></div>
+          <div><dt>ACTION</dt><dd>Hold fees in the treasury</dd></div>
+          <div><dt>PART</dt><dd>Treasury cell</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="mode" data-mode="defend">
+      <div class="mode-card">
+        <p class="eyebrow mono"><span class="mode-idx">MODE 02 / 05</span></p>
+        <h2 class="mode-title"><span class="mode-name">DEFEND</span></h2>
+        <p class="mode-lede">Price slips under its average past the threshold. The machine buys back — deeper dip, bigger buy — capped every cycle so it can never empty the tank at once.</p>
+        <dl class="spec mono">
+          <div><dt>TRIGGER</dt><dd>Price below MA by threshold</dd></div>
+          <div><dt>ACTION</dt><dd>Buyback, scaled to dip depth</dd></div>
+          <div><dt>LIMIT</dt><dd>Per-cycle spend cap</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="mode" data-mode="burn">
+      <div class="mode-card">
+        <p class="eyebrow mono"><span class="mode-idx">MODE 03 / 05</span></p>
+        <h2 class="mode-title"><span class="mode-name">BURN</span></h2>
+        <p class="mode-lede">Everything the machine buys goes in one direction: out of existence. Burned on-chain, with the transaction on the receipt.</p>
+        <dl class="spec mono">
+          <div><dt>TRIGGER</dt><dd>Any tokens bought by the machine</dd></div>
+          <div><dt>ACTION</dt><dd>On-chain burn, every time</dd></div>
+          <div><dt>SUPPLY</dt><dd>Only goes down</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="mode" data-mode="ignite">
+      <div class="mode-card">
+        <p class="eyebrow mono"><span class="mode-idx">MODE 04 / 05</span></p>
+        <h2 class="mode-title"><span class="mode-name">IGNITE</span></h2>
+        <p class="mode-lede">Volume spikes and price prints a new high. The machine adds one small fuel buy to the fire — then cools down.</p>
+        <dl class="spec mono">
+          <div><dt>TRIGGER</dt><dd>Volume spike + new high</dd></div>
+          <div><dt>ACTION</dt><dd>One small fuel buy</dd></div>
+          <div><dt>LIMIT</dt><dd>Mandatory cooldown</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="mode" data-mode="unlock">
+      <div class="mode-card">
+        <p class="eyebrow mono"><span class="mode-idx">MODE 05 / 05</span></p>
+        <h2 class="mode-title"><span class="mode-name">UNLOCK</span></h2>
+        <p class="mode-lede">Clear a floor on the way to $1B and the machine fires a one-off event: a large burn, a holder payout, or a bigger buyback budget.</p>
+        <dl class="spec mono">
+          <div><dt>TRIGGER</dt><dd>Market cap clears a floor</dd></div>
+          <div><dt>ACTION</dt><dd>One-time unlock event</dd></div>
+          <div><dt>FREQUENCY</dt><dd>Once per floor. Ever.</dd></div>
+        </dl>
+      </div>
+    </article>
+  </section>
+
+  <!-- ───────── 5: THE CLIMB ───────── -->
+  <section id="floors" class="floors" aria-label="The climb to one billion">
+    <div class="sec-head">
+      <p class="eyebrow mono">THE CLIMB</p>
+      <h2>$0 → $1,000,000,000.</h2>
+      <p class="sec-lede">Eight floors. Each one cleared fires one UNLOCK — once, forever. Then the machine aims at the next.</p>
+    </div>
+    <div class="climb">
+      <div class="climb-sticky">
+        <div class="meter">
+          <div class="meter-label mono"><span id="meter-src">THE CLIMB · SCROLL TO RUN</span><span id="meter-floor">FLOOR 00 / 08</span></div>
+          <div class="meter-value mono" id="meter-value">$0</div>
+          <div class="meter-track"><i id="meter-fill"></i><span class="meter-here" id="meter-here"><em class="mono">YOU ARE HERE</em></span></div>
+          <div class="meter-scale mono"><span>$0</span><span>$1B</span></div>
+          <div class="meter-next mono" id="meter-next">NEXT FLOOR · $1M · FIRST LIGHT</div>
+          <div class="meter-live mono" id="meter-live"><i class="live"></i>LIVE MC · <b>$0</b> · PRE-LAUNCH</div>
+        </div>
+      </div>
+      <ol class="floor-list" id="floor-list"></ol>
+    </div>
+    <p class="fine mono">The climb is a scroll simulation. The live line on the card is the real market cap — $0 until the token launches. Floors are targets, not predictions. Unlock events shown are the planned rule set and will be published in full before launch.</p>
+  </section>
+
+  <!-- ───────── 6: RECEIPTS ───────── -->
+  <section id="receipts" class="receipts" aria-label="Machine receipts">
+    <div class="sec-head">
+      <p class="eyebrow mono">RECEIPTS</p>
+      <h2>It shows its work.</h2>
+      <p class="sec-lede">Every cycle prints a receipt: the inputs it read, the mode it chose, the action it took, and the transaction. Below is the real treasury, read live from Solana mainnet.</p>
+    </div>
+    <div class="rx-grid">
+      <aside class="panel status">
+        <div class="panel-head mono"><span><i class="live"></i> MACHINE STATUS</span><span class="tag" id="st-tag">CONNECTING</span></div>
+        <div class="status-mode">
+          <span class="mono k">CURRENT MODE</span>
+          <span class="v" id="st-mode">ARMED</span>
+        </div>
+        <div class="status-rows mono">
+          <div class="st-addr"><span>WALLET</span><span class="tr-chip" data-tr-chip></span></div>
+          <div><span>TREASURY</span><b id="st-treasury">— SOL</b></div>
+          <div><span>TRANSACTIONS</span><b id="st-txs">—</b></div>
+          <div><span>BURNED</span><b id="st-burned">0</b></div>
+          <div><span>FLOOR</span><b id="st-floor">00 / 08</b></div>
+          <div><span>CYCLES RUN</span><b id="st-cycles">0</b></div>
+          <div><span>NEXT CHECK</span><b id="st-next">--:--</b></div>
+        </div>
+        <p class="status-note">Balance and transactions are read live from Solana mainnet<span class="st-src"> via <b id="st-rpc">—</b> · <span id="st-checked">—</span></span>. The machine runs its first cycle at launch.</p>
+      </aside>
+      <div class="panel log">
+        <div class="panel-head mono"><span>TREASURY FEED</span><span class="tag" id="log-tag">CONNECTING…</span></div>
+        <div class="log-list" id="log-list" aria-live="off"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── RULES + FACTS ───────── -->
+  <section id="facts" class="facts" aria-label="Rules and facts">
+    <div class="sec-head">
+      <p class="eyebrow mono">ANTI-GAMING</p>
+      <h2>Rules you can read.<br>Timing you can't.</h2>
+    </div>
+    <div class="rules">
+      <div class="rule"><span class="mono n">01</span><h3>Randomized timing</h3><p>Each action fires at a random moment inside its cycle. Bots can't sit on the hour and front-run it.</p></div>
+      <div class="rule"><span class="mono n">02</span><h3>Cooldowns</h3><p>Every mode has a cooldown. No mode can fire back-to-back and drain the treasury in one move.</p></div>
+      <div class="rule"><span class="mono n">03</span><h3>Published rules</h3><p>Thresholds, caps and floors are public. Everyone knows exactly how the machine thinks.</p></div>
+    </div>
+
+    <div class="facts-wrap">
+      <div class="label-card">
+        <div class="lc-title">Machine Facts</div>
+        <div class="lc-row lc-head"><span><b>Active ingredient</b></span><span><b>Purpose</b></span></div>
+        <div class="lc-row"><span>Creator fees (100%)</span><span>Treasury</span></div>
+        <div class="lc-sec"><b>Uses</b> ■ stacks SOL in calm markets ■ buys back dips ■ burns what it buys ■ fuels breakouts ■ fires one event per floor</div>
+        <div class="lc-sec"><b>Warnings</b> The machine's firepower is only as big as the fees it collects. It cannot create money, stop a sell-off, or guarantee a price. Nothing here is a promise or financial advice.</div>
+        <div class="lc-sec"><b>Directions</b> Hold 1 machine. Cycle runs every <span data-cycle-min>60</span> minutes. Read receipts as needed.</div>
+        <div class="lc-sec"><b>Do not use</b> if you need someone to press the button.</div>
+        <div class="lc-sec lc-last"><b>Inactive ingredients</b> memes, conviction, you.</div>
+      </div>
+      <figure class="facts-photo">
+        <img src="assets/img/logo-blister.jpg" alt="Billion Machine sealed in its blister pack" loading="lazy" width="900" height="900">
+      </figure>
+    </div>
+  </section>
+
+  <!-- ───────── FOOTER ───────── -->
+  <footer class="foot" id="buy">
+    <p class="eyebrow mono">ONE DOSE. ONE BILLION.</p>
+    <h2 class="foot-title">Take the<br>machine.</h2>
+    <div class="foot-ca">
+      <span class="mono k">CONTRACT</span>
+      <button class="ca-big mono" data-ca-chip type="button"><span data-ca-text>AWAITING CA</span><span class="copy mono" data-ca-copy>COPY</span></button>
+    </div>
+    <div class="foot-ca foot-tr">
+      <span class="mono k">TREASURY · <b data-tr-bal>— SOL</b></span>
+      <span class="tr-chip big mono" data-tr-chip></span>
+    </div>
+    <div class="foot-actions">
+      <a class="pill-btn big" data-buy href="#" aria-disabled="true"><span>Buy $<span data-ticker>BILLION</span></span></a>
+      <a class="ghost-btn" data-x href="#" aria-disabled="true">X / Twitter</a>
+      <a class="ghost-btn" data-treasury href="#" aria-disabled="true">Treasury on Solscan ↗</a>
+    </div>
+    <figure class="foot-strip"><img src="assets/img/strip.jpg" alt="A strip of five Billion Machines in blister packs" loading="lazy" width="1500" height="500"></figure>
+    <div class="foot-base mono">
+      <span>BILLION MACHINE · $<span data-ticker>BILLION</span></span>
+      <span>Not financial advice. Nothing is guaranteed. The machine only has the fees it collects.</span>
+      <span>LOT 1B-000001 · EXP NEVER</span>
+    </div>
+  </footer>
+</main>
+
+<div class="toast mono" id="toast" role="status"></div>
+<noscript><style>#loader{display:none}</style></noscript>
+<script type="module" src="main.js"></script>
+</body>
+</html>

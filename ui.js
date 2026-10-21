@@ -28,11 +28,26 @@ function wireConfig() {
   $$('[data-cycle-min]').forEach((e) => (e.textContent = CONFIG.CYCLE_MINUTES));
   $$('[data-ca-chip]').forEach((chip) => {
     const txt = $('[data-ca-text]', chip);
+    const nav = chip.classList.contains('ca-chip');
     if (ca) {
-      chip.classList.add('live');
-      txt.textContent = chip.classList.contains('ca-chip') ? ca.slice(0, 4) + '…' + ca.slice(-4) : ca;
+      chip.classList.add('is-live');
+      chip.title = ca;
+      // nav: short form. footer: full CA (+ a short form the CSS swaps in on phones)
+      if (nav) txt.textContent = ca.slice(0, 5) + '…' + ca.slice(-4);
+      else txt.innerHTML = `<span class="ca-full">${ca}</span><span class="ca-short">${ca.slice(0, 5)}…${ca.slice(-4)}</span>`;
       chip.addEventListener('click', async () => {
-        try { await navigator.clipboard.writeText(ca); toast('CA copied'); } catch { toast(ca); }
+        let ok = true;
+        try { await navigator.clipboard.writeText(ca); } catch { ok = false; }
+        if (!ok) { toast(ca); return; }
+        chip.classList.add('copied');
+        const cp = $('[data-ca-copy]', chip); if (cp) cp.textContent = 'COPIED';
+        if (nav) txt.textContent = 'COPIED';
+        toast('CA copied');
+        clearTimeout(chip._t); chip._t = setTimeout(() => {
+          chip.classList.remove('copied');
+          if (cp) cp.textContent = 'COPY';
+          if (nav) txt.textContent = ca.slice(0, 5) + '…' + ca.slice(-4);
+        }, 1600);
       });
     } else {
       txt.textContent = 'AWAITING CA';
@@ -72,8 +87,11 @@ function wireTreasury() {
     if (!TR) { el.innerHTML = '<span class="tr-addr">AWAITING TREASURY</span>'; return; }
     el.classList.add('is-set');
     el.innerHTML = `<a class="tr-addr" href="https://solscan.io/account/${TR}" target="_blank" rel="noopener" title="${TR}">${short(TR)}<span class="ext">↗</span></a><button type="button" class="tr-copy">COPY</button>`;
-    el.querySelector('.tr-copy').addEventListener('click', async () => {
-      try { await navigator.clipboard.writeText(TR); toast('Treasury address copied'); } catch { toast(TR); }
+    const b = el.querySelector('.tr-copy');
+    b.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(TR); } catch { toast(TR); return; }
+      b.textContent = 'COPIED'; b.classList.add('copied'); toast('Treasury address copied');
+      clearTimeout(b._t); b._t = setTimeout(() => { b.textContent = 'COPY'; b.classList.remove('copied'); }, 1600);
     });
   });
 }

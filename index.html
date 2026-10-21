@@ -42,8 +42,8 @@
     <a href="#facts">Facts</a>
   </nav>
   <div class="nav-right">
-    <button class="ca-chip mono" data-ca-chip type="button"><span class="dot"></span><span data-ca-text>AWAITING CA</span></button>
-    <a class="pill-btn" data-buy href="#" aria-disabled="true">Take the machine</a>
+    <button class="ca-chip mono" data-ca-chip type="button" aria-label="Copy contract address"><span class="dot"></span><span class="ca-k">CA</span><span data-ca-text>AWAITING CA</span><span class="ca-ic" aria-hidden="true"></span></button>
+    <a class="pill-btn" data-buy href="#" aria-disabled="true"><span class="nb-long">Take the machine</span><span class="nb-short">Buy</span></a>
   </div>
 </header>
 
@@ -284,13 +284,17 @@
   <footer class="foot" id="buy">
     <p class="eyebrow mono">ONE DOSE. ONE BILLION.</p>
     <h2 class="foot-title">Take the<br>machine.</h2>
-    <div class="foot-ca">
-      <span class="mono k">CONTRACT</span>
-      <button class="ca-big mono" data-ca-chip type="button"><span data-ca-text>AWAITING CA</span><span class="copy mono" data-ca-copy>COPY</span></button>
-    </div>
-    <div class="foot-ca foot-tr">
-      <span class="mono k">TREASURY · <b data-tr-bal>— SOL</b></span>
-      <span class="tr-chip big mono" data-tr-chip></span>
+    <div class="foot-ids">
+      <button class="addr-pill ca-big mono" data-ca-chip type="button" aria-label="Copy contract address">
+        <span class="ap-k">CA</span>
+        <span class="ap-v" data-ca-text>AWAITING CA</span>
+        <span class="ap-copy" data-ca-copy>COPY</span>
+      </button>
+      <div class="addr-pill tr-pill mono">
+        <span class="ap-k">TREASURY</span>
+        <span class="tr-chip" data-tr-chip></span>
+        <b class="ap-bal" data-tr-bal>— SOL</b>
+      </div>
     </div>
     <div class="foot-actions">
       <a class="pill-btn big" data-buy href="#" aria-disabled="true"><span>Buy $<span data-ticker>BILLION</span></span></a>
